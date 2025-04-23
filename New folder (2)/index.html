@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Todo App</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-yellow-100 p-4">
+
+  <div class="min-h-screen grid grid-cols-1 gap-4 md:grid-cols-3">
+    <!-- Sidebar -->
+    <div class="p-4 bg-white rounded-xl shadow">
+      <h2 class="text-xl font-semibold mb-4">Hello Ender</h2>
+      <ul class="space-y-3">
+        <li class="bg-white p-3 rounded-2xl shadow flex justify-between"><span>Today</span> <span>2 Tasks</span></li>
+        <li class="bg-white p-3 rounded-2xl shadow flex justify-between"><span>Planned</span> <span>4 Tasks</span></li>
+        <li class="bg-white p-3 rounded-2xl shadow flex justify-between"><span>Personal</span> <span>3 Tasks</span></li>
+        <li class="bg-white p-3 rounded-2xl shadow flex justify-between"><span>Work</span> <span>1 Task</span></li>
+        <li class="bg-white p-3 rounded-2xl shadow flex justify-between"><span>Shopping</span> <span>5 Tasks</span></li>
+      </ul>
+    </div>
+
+    <!-- Welcome Panel -->
+    <div class="bg-white p-8 rounded-xl shadow text-center flex flex-col justify-center items-center">
+      <img src="/illustration.png" alt="Get Organized" class="w-32 mb-4" />
+      <h1 class="text-2xl font-bold mb-2">Get Organized Your Life</h1>
+      <p class="text-gray-600 mb-4">A simple and effective to-do and task manager.</p>
+      <button class="bg-black text-white py-2 px-4 rounded-xl">Get Started</button>
+    </div>
+
+    <!-- Task List -->
+    <div class="bg-white p-4 rounded-xl shadow">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-bold">Personal</h2>
+        <button class="flex items-center text-black" onclick="handleVoiceCommand()">
+          <i data-lucide="mic" class="mr-2"></i>
+          <span id="voice-label">Speak</span>
+        </button>
+      </div>
+      <ul id="taskList" class="space-y-2">
+        <li class="bg-white p-3 rounded-xl flex items-center shadow"><input type="checkbox" class="mr-3" /> Meet friends</li>
+        <li class="bg-white p-3 rounded-xl flex items-center shadow"><input type="checkbox" class="mr-3" /> Change your picture</li>
+        <li class="bg-white p-3 rounded-xl flex items-center shadow"><input type="checkbox" class="mr-3" /> Buy theatre ticket</li>
+        <li class="bg-white p-3 rounded-xl flex items-center shadow"><input type="checkbox" class="mr-3" /> Go to gym</li>
+        <li class="bg-white p-3 rounded-xl flex items-center shadow"><input type="checkbox" class="mr-3" /> Add your portfolio</li>
+        <li class="bg-white p-3 rounded-xl flex items-center shadow"><input type="checkbox" class="mr-3" /> Send project files</li>
+        <li class="bg-white p-3 rounded-xl flex items-center shadow"><input type="checkbox" class="mr-3" /> Pay bills</li>
+        <li class="bg-white p-3 rounded-xl flex items-center shadow"><input type="checkbox" class="mr-3" /> Watch Westworld</li>
+      </ul>
+      <button class="mt-4 w-full bg-black text-white py-2 px-4 rounded-xl flex items-center justify-center">
+        <i data-lucide="plus" class="mr-2"></i> Add Task
+      </button>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function handleVoiceCommand() {
+      const voiceLabel = document.getElementById('voice-label');
+      voiceLabel.textContent = 'Listening...';
+
+      setTimeout(() => {
+        const newTask = document.createElement('li');
+        newTask.className = 'bg-white p-3 rounded-xl flex items-center shadow';
+        newTask.innerHTML = '<input type="checkbox" class="mr-3" /> Buy groceries';
+        document.getElementById('taskList').appendChild(newTask);
+        voiceLabel.textContent = 'Speak';
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>
+
+
